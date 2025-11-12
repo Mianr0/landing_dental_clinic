@@ -1,0 +1,38 @@
+{
+  "name": "tailwind-landing-starter-min",
+  "private": true,
+  "version": "0.1.0",
+  "scripts": {
+    "dev": "concurrently -n CSS,SERVER -c auto \"npm:tw:watch\" \"npm:serve\"",
+    "serve": "live-server public --no-browser --port=5173",
+    "tw:watch": "tailwindcss -i ./public/assets/input.css -o ./public/assets/tailwind.css -w",
+    "build": "tailwindcss -i ./public/assets/input.css -o ./public/assets/tailwind.css --minify",
+    "lint": "npm run lint:css && npm run lint:html && npm run lint:html:indent",
+    "lint:css": "stylelint \"public/**/*.css\"",
+    "lint:html": "htmlhint \"public/**/*.html\"",
+    "lint:html:indent": "eslint \"public/**/*.html\"",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
+  },
+  "devDependencies": {
+    "@html-eslint/eslint-plugin": "^0.48.0",
+    "@html-eslint/parser": "^0.48.0",
+    "@tailwindcss/cli": "^4.1.17",
+    "concurrently": "^9.2.1",
+    "eslint": "^9.39.1",
+    "htmlhint": "^1.7.1",
+    "live-server": "^1.2.2",
+    "prettier": "^3.6.2",
+    "prettier-plugin-tailwindcss": "^0.7.1",
+    "stylelint": "^16.25.0",
+    "stylelint-config-recommended": "^17.0.0",
+    "stylelint-config-standard": "^39.0.1",
+    "stylelint-config-tailwindcss": "^1.0.0",
+    "stylelint-order": "^7.0.0",
+    "tailwindcss": "^4.1.17"
+  },
+  "dependencies": {
+    "autoprefixer": "^10.4.22",
+    "postcss": "^8.5.6"
+  }
+}

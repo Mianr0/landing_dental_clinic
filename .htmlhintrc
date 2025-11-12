@@ -1,0 +1,8 @@
+{
+  "extends": "htmlhint:recommended",
+  "doctype-first": false,
+  "alt-require": true,
+  "img-alt-require": true,
+  "space-tab-mixed-disabled": "space",
+  "title-require": true
+}
