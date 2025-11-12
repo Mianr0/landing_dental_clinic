@@ -1,0 +1,32 @@
+name: Lint
+on:
+  pull_request:
+  push:
+    branches: [main]
+concurrency:
+  group: lint-${{ github.ref }}
+  cancel-in-progress: true
+permissions:
+  contents: read
+env:
+  CI: true
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      - name: Install dependencies
+        run: npm ci
+      - name: Run project lints
+        run: npm run lint
+      - name: Prettier check
+        run: npx prettier --check .
+      - name: Tailwind build check
+        run: npx @tailwindcss/cli -i ./public/assets/input.css -o ./public/assets/tailwind.css --minify
